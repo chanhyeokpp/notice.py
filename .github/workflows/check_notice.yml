@@ -1,1 +1,26 @@
+name: Check Notice
+on:
+  schedule:
+    - cron: '*/30 * * * *' # 30분마다 자동으로 실행 (원하는 대로 조절 가능)
+  workflow_dispatch: # 수동으로 실행해볼 수 있는 버튼 생성
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+      - name: Run script
+        run: python notice.py
+      - name: Commit changes # 새 공지 ID를 저장하기 위해 필요함
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add last_notice.txt
+          git commit -m "Update last notice id" || exit 0
+          git push
