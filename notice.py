@@ -3,8 +3,8 @@ from bs4 import BeautifulSoup
 import time
 
 # --- 수정이 필요한 구간 ---
-TOKEN = '복사한_API_토큰'
-CHAT_ID = '복사한_채팅_아이디'
+TOKEN = '8250771276:AAHgUVIhcfYki6eYgcz2cPpmNlZ04QFy0rk'
+CHAT_ID = '8445428181'
 URL = "https://www.hongik.ac.kr/kr/newscenter/notice.do"
 KEYWORDS = ["교내봉사", "교내 근로", "봉사장학생"]
 # -----------------------
